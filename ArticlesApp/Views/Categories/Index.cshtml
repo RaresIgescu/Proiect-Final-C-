@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Lista categorii";
+}
+
+<div class="container">
+    <h2 class="my-4">@ViewBag.Title</h2>
+</div>
+
+@if (TempData.ContainsKey("message"))
+{
+    <div class="alert alert-success text-center mb-4">
+        <h4>@ViewBag.message</h4>
+    </div>
+}
+
+<div class="container">
+    <div class="row g-4">
+        @foreach (ArticlesApp.Models.Category category in ViewBag.Categories)
+        {
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">
+                            <i class="bi bi-globe me-2"></i>@category.CategoryName
+                        </h5>
+
+                        <div class="d-flex justify-content-between">
+                            <a class="btn btn-outline-primary" asp-controller="Categories" asp-action="Show" asp-route-id="@category.Id">
+                                <i class="bi bi-eye"></i> Afisare
+                            </a>
+                            <a class="btn btn-outline-warning" asp-controller="Categories" asp-action="Edit" asp-route-id="@category.Id">
+                                <i class="bi bi-pencil"></i> Editare
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-success" asp-controller="Categories" asp-action="New">
+            <i class="bi bi-plus-circle"></i> Adauga o noua categorie
+        </a>
+    </div>
+</div>

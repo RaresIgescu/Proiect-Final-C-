@@ -1,0 +1,41 @@
+﻿@model ArticlesApp.Models.Order
+
+<div class="container my-5">
+    <h2 class="mb-4">Detalii Comandă #@Model.Id</h2>
+
+    <table class="table table-bordered table-hover mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Produs</th>
+                <th>Preț (RON)</th>
+                <th>Cantitate</th>
+                <th>Total (RON)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var articleOrder in Model.ArticleOrders)
+            {
+                <tr>
+                    <td>@articleOrder.Article.Id</td>
+                    <td>@articleOrder.Article.Title</td>
+                    <td>@articleOrder.Article.Pret</td>
+                    <td>@articleOrder.Quantity</td>
+                    <td>@(articleOrder.Article.Pret * Int32.Parse(articleOrder.Quantity))</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="4" class="text-end">Total comandă:</th>
+                <th>
+                    @Model.ArticleOrders.Sum(ao => (ao.Article.Pret * Int32.Parse(ao.Quantity))) RON
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a class="btn btn-primary mt-4" asp-controller="Orders" asp-action="Index">
+        <i class="bi bi-arrow-left"></i> Înapoi la comenzi
+    </a>
+</div>

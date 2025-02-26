@@ -1,0 +1,89 @@
+﻿@model ArticlesApp.Models.Article
+
+<br />
+
+<div class="container mt-5">
+
+    <partial name="ArticleInfo" model="Model"></partial>
+
+    @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+    {
+        <div class="d-flex justify-content-start mt-3">
+            <a class="btn btn-primary me-2" asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id">
+                <i class="bi bi-pencil-square"></i> Editează articol
+            </a>
+
+            <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id">
+                <button class="btn btn-danger" type="submit">
+                    <i class="bi bi-trash"></i> Șterge articol
+                </button>
+            </form>
+        </div>
+    }
+
+    <div class="mt-5">
+        <h4>Comentarii</h4>
+        @if (Model.Comments.Any())
+        {
+            @foreach (var comm in Model.Comments)
+            {
+                <div class="card my-3 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-1"><strong>@comm.User.UserName</strong> <span class="text-muted">(@comm.Date)</span></p>
+                        <p>@comm.Content</p>
+                        <p class="text-warning">
+                            <i class="bi bi-star-fill"></i> @comm.Rating / 5
+                        </p>
+                        @if (comm.UserId == ViewBag.UserCurent || ViewBag.EsteAdmin == true)
+                        {
+                            <div class="d-flex gap-2 mt-2">
+                                <a class="btn btn-outline-primary btn-sm" asp-controller="Comments" asp-action="Edit" asp-route-id="@comm.Id">
+                                    <i class="bi bi-pencil-square"></i> Editează
+                                </a>
+                                <form method="post" asp-controller="Comments" asp-action="Delete" asp-route-id="@comm.Id">
+                                    <button class="btn btn-outline-danger btn-sm" type="submit">
+                                        <i class="bi bi-trash"></i> Șterge
+                                    </button>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">Nu există comentarii pentru acest articol.</p>
+        }
+    </div>
+
+    <div class="mt-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Adaugă o recenzie</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="Articles" asp-action="Show">
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <select class="form-control" name="rating">
+                            <option value="1">1 - Foarte prost</option>
+                            <option value="2">2 - Prost</option>
+                            <option value="3">3 - Mediu</option>
+                            <option value="4">4 - Bun</option>
+                            <option value="5">5 - Excelent</option>
+                        </select>
+                        <span asp-validation-for="Rating" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Content" class="form-label">Conținut recenzie</label>
+                        <textarea class="form-control" name="Content" rows="4"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" name="ArticleId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-info text-white w-100">Adaugă recenzie</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

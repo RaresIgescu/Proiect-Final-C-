@@ -1,0 +1,59 @@
+﻿@model ArticlesApp.Models.Article
+
+<h2 class="text-center mt-5">Editare articol</h2>
+
+<br />
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-success text-white text-start">
+                    <h2 class="mb-0">Editare articol</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="Edit" asp-controller="Articles" asp-route-id="@Model.Id" enctype="multipart/form-data">
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Title" class="form-label fw-bold">Titlu Articol</label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Content" class="form-label fw-bold">Conținut Articol</label>
+                            <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="CategoryId" class="form-label fw-bold">Selectați categoria</label>
+                            <select asp-for="CategoryId" asp-items="Model.Categ" class="form-control">
+                                <option value="">Selectați categoria</option>
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Pret" class="form-label fw-bold">Preț</label>
+                            <input asp-for="Pret" class="form-control" />
+                            <span asp-validation-for="Pret" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Stoc" class="form-label fw-bold">Stoc</label>
+                            <input asp-for="Stoc" class="form-control" />
+                            <span asp-validation-for="Stoc" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-success text-white fw-bold" type="submit">Modifică articol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

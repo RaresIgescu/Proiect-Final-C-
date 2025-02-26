@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ArticlesApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ArticlesApp.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" data-bs-theme="dark">
+        <div class="container">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Index">
+                <img src="@(Url.Content("https://localhost:7223/" + "./images/Primul 11.png"))" alt="Logo" width="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Index">Afisare articole</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="New">Adaugare articol</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Afisare categorii</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Cart">Afisare cos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Afisare comenzi</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Editor"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Index">Afisare articole</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="New">Adaugare articol</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Cart">Afisare cos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Afisare comenzi</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("User"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Index">Afisare articole</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Afisare comenzi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Cart">Afisare cos</a>
+                        </li>
+                    }
+                    <partial name="_LoginPartial" />
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+                <p class="text-body-secondary">© 2024 <br /> Igescu Rares-Andrei <br /> Ioan Antonio</p>
+            </div>
+
+            <div class="col mb-3">
+            </div>
+
+            <div class="col mb-3">
+                <h5>Igescu Rares-Andrei</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="https://github.com/RaresIgescu" class="nav-link p-0 text-body-secondary">GitHub</a></li>
+                    <li class="nav-item mb-2"><a href="https://www.linkedin.com/in/rares-igescu-2359752ab/" class="nav-link p-0 text-body-secondary">LinkedIn</a></li>
+                    <li class="nav-item mb-2"><a href="https://leetcode.com/u/RaresIGI/" class="nav-link p-0 text-body-secondary">LeetCode</a></li>
+                    <li class="nav-item mb-2"><a href="https://www.facebook.com/YGERA" class="nav-link p-0 text-body-secondary">FaceBook</a></li>
+                </ul>
+            </div>
+            <div class="col mb-3">
+                <h5>Ioan Antonio</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="https://github.com/ioanantonio2003" class="nav-link p-0 text-body-secondary">GitHub</a></li>
+                    <li class="nav-item mb-2"><a href="https://www.facebook.com/profile.php?id=100007458288815" class="nav-link p-0 text-body-secondary">FaceBook</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+   
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

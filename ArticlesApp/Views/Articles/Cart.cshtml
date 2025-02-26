@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Coș de cumpărături";
+}
+
+<h2 class="my-3">Coș de cumpărături</h2>
+
+@if (ViewBag.Articles == null)
+{
+    <div class="alert alert-warning">
+        Coșul tău este gol. Adaugă articole pentru a plasa o comandă!
+    </div>
+}
+else
+{
+    <div class="list-group">
+        @foreach (var article in ViewBag.Articles)
+        {
+            <div class="list-group-item py-3">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <img src="@(Url.Content("https://localhost:7223/" + article.ImagePath))"
+                             class="img-fluid rounded" alt="@article.Title"
+                             style="max-height: 150px; object-fit: cover;">
+                    </div>
+
+                    <div class="col-6">
+                        <h5 class="mb-2">@article.Title</h5>
+                        <p class="mb-1 text-muted">@article.Content</p>
+                        <p class="mb-0"><strong>Preț:</strong> @article.Pret RON</p>
+                    </div>
+
+                    <div class="col-3 text-end">
+                        <form method="post" class="ms-2" asp-controller="Articles" asp-action="RemoveFromCart" asp-route-id="@article.Id">
+                            <button class="btn btn-danger btn-sm" type="submit">Șterge articol</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+        <div class="text-end mt-4">
+            <a class="btn btn-primary btn-lg" asp-controller="Articles" asp-action="PlaceOrder">
+                Plasează comanda <i class="bi bi-cart-check"></i>
+            </a>
+        </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger mt-4">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success mt-4">
+        @TempData["Message"]
+    </div>
+}
