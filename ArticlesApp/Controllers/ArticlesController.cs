@@ -198,7 +198,7 @@ namespace ArticlesApp.Controllers
                 }
 
                 TempData["Message"] = "Comentariul a fost adăugat cu succes!";
-                return Redirect("/Articles/Show/" + comment.ArticleId);
+                return Redirect("/Articles/Show?id=" + comment.ArticleId);
             }
             else
             {

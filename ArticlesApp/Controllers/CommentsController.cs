@@ -32,16 +32,33 @@ namespace ArticlesApp.Controllers
             if (comm.UserId == _userManager.GetUserId(User) || User.IsInRole("Admin"))
             {
                 db.Comments.Remove(comm);
-                db.SaveChanges();
-                return Redirect("/Articles/Show/" + comm.ArticleId);
+                db.SaveChanges(); // Salvează ștergerea
+
+                var article = db.Articles.FirstOrDefault(a => a.Id == comm.ArticleId);
+                if (article != null)
+                {
+                    var commentsForArticle = db.Comments.Where(c => c.ArticleId == comm.ArticleId);
+                    if (!commentsForArticle.Any())
+                    {
+                        article.Rating = 0;
+                    }
+                    else
+                    {
+                        article.Rating = commentsForArticle.Average(c => c.Rating);
+                    }
+                    db.Articles.Update(article);
+                    db.SaveChanges();
+                }
+                return Redirect("/Articles/Show?id=" + comm.ArticleId);
             }
             else
             {
                 TempData["message"] = "Nu aveti dreptul sa stergeti comentariul";
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("Index", "Articles");
-            }    
+            }
         }
+
 
         [Authorize(Roles = "User,Editor,Admin")]
         public IActionResult Edit(int id)
