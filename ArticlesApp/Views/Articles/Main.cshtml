@@ -4,41 +4,107 @@
 }
 
 <div class="container mt-5">
-    <div class="text-center mb-5">
-        <h1>Primul 11</h1>
-        <p class="lead">Inspirație și pasiune pentru fotbal</p>
+    <!-- Carousel -->
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-theme="dark">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" class="active" aria-label="Slide 2" aria-current="true"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="300" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="transparent"></rect>
+                </svg>
+                <div class="container">
+                    <div class="carousel-caption text-start text-dark">
+                        <h1 class="display-3">Pasiune pura</h1>
+                        <p class="opacity-75 fs-4">Fiecare meci este o poveste unică. Descoperă colecția noastră de echipamente de top și lasă-te inspirat!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item active">
+                <svg class="bd-placeholder-img" width="100%" height="300" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="transparent"></rect>
+                </svg>
+                <div class="container">
+                    <div class="carousel-caption text-dark">
+                        <h1 class="display-3">Performanta in fiecare zi</h1>
+                        <p class="fs-4">Profită de reducerile de 20% la toată gama de ghete de fotbal. E momentul perfect să îți upgradezi echipamentul!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="300" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="transparent"></rect>
+                </svg>
+                <div class="container">
+                    <div class="carousel-caption text-end text-dark">
+                        <h1 class="display-3">Experiență la Primul 11</h1>
+                        <p class="fs-4">"Am găsit echipamentul perfect la Primul 11. Recomand cu încredere!" – Un client fericit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-theme="dark" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-theme="dark" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-primary">
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p>"Fotbalul este mai mult decât un joc; este pasiune, este viață."</p>
-                        <footer class="blockquote-footer">Anonim</footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-primary">
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p>"Calitatea produselor noastre reflectă dragostea noastră pentru acest sport."</p>
-                        <footer class="blockquote-footer">Echipa Primul 11</footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-primary">
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p>"Facem totul pentru a inspira și a aduce bucurie pe terenul de fotbal."</p>
-                        <footer class="blockquote-footer">Echipa Noastră</footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
+    <style>
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+        }
+        /* Spațiere suplimentară pentru secțiuni */
+        .jumbotron {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .maps-section {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+    </style>
+
+    <!-- Section: Despre Noi -->
+    <div class="jumbotron">
+        <h2 class="display-4 text-center">Cine suntem noi?</h2>
+        <p class="lead text-center fs-5">
+            La Primul 11, pasiunea pentru fotbal ne unește și ne motivează să oferim cele mai bune produse pentru sportivi și fani de pretutindeni. Fiecare detaliu, de la echipamente la nutriție, este ales cu grijă pentru a asigura performanță, confort și stil.
+            Suntem o echipă dedicată care crede că sportul nu este doar un joc, ci o sursă de inspirație și transformare. Pentru noi, fiecare meci și fiecare antrenament reprezintă o nouă oportunitate de a demonstra angajamentul față de excelență.
+        </p>
     </div>
+
+    <div class="maps-section mb-5">
+        <h2 class="text-center mb-3">Ne găsiți aici</h2>
+        <div class="ratio ratio-16x9 mx-auto" style="max-width: 800px;">
+            <!-- Înlocuiește 'YOUR_API_KEY' cu cheia ta Google Maps API -->
+            <iframe src="https://www.google.com/maps/embed/v1/place?q=Bucuresti&key=API+KEY" allowfullscreen></iframe>
+        </div>
+        <p class="text-center mt-3 fs-5">Strada Exemplu, Nr. 123, București, România</p>
+    </div>
+
 </div>
+
+@section Scripts {
+    <script>
+        // Inițializare carousel
+        $('.carousel').carousel();
+    </script>
+}

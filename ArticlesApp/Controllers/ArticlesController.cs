@@ -27,7 +27,12 @@ namespace ArticlesApp.Controllers
             _roleManager = roleManager;
         }
 
-        [AllowAnonymous]
+        public IActionResult Main()
+        {
+            return View();
+        }
+
+            [AllowAnonymous]
         [Authorize(Roles = "User,Editor,Admin")]
         public IActionResult Index()
         {
