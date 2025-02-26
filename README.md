@@ -62,10 +62,6 @@ This project is a fully-functional e-commerce application that provides a dynami
 
 Contributions are welcome! Feel free to submit pull requests or open issues if you encounter any bugs or have suggestions for improvements.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ---
 
 **Primul 11** is built with passion for football and aims to deliver the best shopping experience for sports enthusiasts. Enjoy exploring and shopping!
